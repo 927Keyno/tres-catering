@@ -1,6 +1,6 @@
-# Tres Catering
+# Tre's Catering
 
-Animated static website for Tres Catering, built with plain HTML, CSS, and JavaScript.
+Animated static website for Tre's Catering, built with plain HTML, CSS, and JavaScript.
 
 ## Local Preview
 
