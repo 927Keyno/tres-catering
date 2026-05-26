@@ -11,20 +11,20 @@ const quoteForm = document.querySelector(".quote-form");
 const bookingPhone = "+13135985098";
 
 const packageContent = {
-  social: {
-    kicker: "Social package",
-    title: "Birthday, shower, and backyard spreads",
-    body: "Easy service, bright food, sturdy timing, and a menu that keeps guests circulating.",
+  woodFired: {
+    kicker: "Wood-fired package",
+    title: "Pizza, pasta, salad, and apps",
+    body: "A familiar party format with elevated flavors, easy portions, and food that keeps moving.",
   },
-  corporate: {
-    kicker: "Corporate package",
-    title: "Lunches, mixers, and team celebrations",
-    body: "Clean setup, reliable portions, labeled options, and food that works around the workday.",
+  dinner: {
+    kicker: "Dinner package",
+    title: "Small plates, mains, sides, and sweets",
+    body: "A fuller service flow for private dinners, family parties, weddings, and plated-style moments.",
   },
-  wedding: {
-    kicker: "Wedding package",
-    title: "Ceremony-to-reception catering flow",
-    body: "Cocktail bites, dinner service, dessert touches, and late-night snacks with a calm event rhythm.",
+  custom: {
+    kicker: "Custom package",
+    title: "Tell Tre what you want made",
+    body: "Italian, comfort food, brunch, snacks, desserts, or a one-off menu built around the event.",
   },
 };
 
@@ -40,7 +40,7 @@ function updateHeader() {
 
 function updateEstimate() {
   const count = Number(guests.value);
-  const base = count * 40;
+  const base = Math.max(125, count * 40);
   guestOutput.textContent = count;
   estimate.textContent = `${money.format(base)}+`;
 }
@@ -50,12 +50,14 @@ function textBookingRequest() {
   const name = formData.get("name")?.trim() || "Guest";
   const phone = formData.get("phone")?.trim() || "Not provided";
   const event = formData.get("event") || "Event";
+  const menuFocus = formData.get("menuFocus") || "Custom menu";
   const notes = formData.get("notes")?.trim() || "No notes yet";
   const body = [
     "Booking request for Tre's Catering",
     `Name: ${name}`,
     `Phone: ${phone}`,
     `Event: ${event}`,
+    `Menu focus: ${menuFocus}`,
     `Guests: ${guests.value}`,
     `Estimate shown: ${estimate.textContent}`,
     `Notes: ${notes}`,
