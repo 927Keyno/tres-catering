@@ -557,17 +557,33 @@ h3 {
 }
 
 .quote-form input[type="text"],
-.quote-form select {
+.quote-form input[type="tel"],
+.quote-form select,
+.quote-form textarea {
   width: 100%;
-  min-height: 3rem;
   border: 1px solid rgba(255, 245, 230, 0.2);
   border-radius: 6px;
-  padding: 0 0.9rem;
   background: rgba(255, 255, 255, 0.08);
   color: var(--cream);
 }
 
-.quote-form input[type="text"]::placeholder {
+.quote-form input[type="text"],
+.quote-form input[type="tel"],
+.quote-form select {
+  min-height: 3rem;
+  padding: 0 0.9rem;
+}
+
+.quote-form textarea {
+  min-height: 6.5rem;
+  resize: vertical;
+  padding: 0.85rem 0.9rem;
+  line-height: 1.45;
+}
+
+.quote-form input[type="text"]::placeholder,
+.quote-form input[type="tel"]::placeholder,
+.quote-form textarea::placeholder {
   color: rgba(255, 245, 230, 0.46);
 }
 
@@ -597,6 +613,17 @@ h3 {
   color: var(--brass);
   font-family: Georgia, serif;
   font-size: 2.1rem;
+}
+
+.text-fallback {
+  justify-self: center;
+  color: rgba(255, 245, 230, 0.68);
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.text-fallback:hover {
+  color: var(--cream);
 }
 
 .site-footer {

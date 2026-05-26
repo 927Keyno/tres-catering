@@ -6,6 +6,9 @@ const guests = document.querySelector("[data-guests]");
 const guestOutput = document.querySelector("[data-guest-output]");
 const estimate = document.querySelector("[data-estimate]");
 const cursorGlow = document.querySelector(".cursor-glow");
+const bookingButton = document.querySelector("[data-text-booking]");
+const quoteForm = document.querySelector(".quote-form");
+const bookingPhone = "+13135985098";
 
 const packageContent = {
   social: {
@@ -40,6 +43,25 @@ function updateEstimate() {
   const base = count * 40;
   guestOutput.textContent = count;
   estimate.textContent = `${money.format(base)}+`;
+}
+
+function textBookingRequest() {
+  const formData = new FormData(quoteForm);
+  const name = formData.get("name")?.trim() || "Guest";
+  const phone = formData.get("phone")?.trim() || "Not provided";
+  const event = formData.get("event") || "Event";
+  const notes = formData.get("notes")?.trim() || "No notes yet";
+  const body = [
+    "Booking request for Tre's Catering",
+    `Name: ${name}`,
+    `Phone: ${phone}`,
+    `Event: ${event}`,
+    `Guests: ${guests.value}`,
+    `Estimate shown: ${estimate.textContent}`,
+    `Notes: ${notes}`,
+  ].join("\n");
+
+  window.location.href = `sms:${bookingPhone}?&body=${encodeURIComponent(body)}`;
 }
 
 function setPackage(kind) {
@@ -78,6 +100,7 @@ packageButtons.forEach((button) => {
 });
 
 guests.addEventListener("input", updateEstimate);
+bookingButton.addEventListener("click", textBookingRequest);
 window.addEventListener("scroll", updateHeader, { passive: true });
 window.addEventListener("pointermove", (event) => {
   cursorGlow.style.opacity = "1";

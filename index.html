@@ -182,6 +182,10 @@
             <input type="text" name="name" placeholder="Your name" autocomplete="name" />
           </label>
           <label>
+            Phone
+            <input type="tel" name="phone" placeholder="Your phone number" autocomplete="tel" />
+          </label>
+          <label>
             Event type
             <select name="event">
               <option>Private dinner</option>
@@ -194,11 +198,16 @@
             Guests
             <input type="range" name="guests" min="25" max="300" value="90" step="5" data-guests />
           </label>
+          <label>
+            Notes
+            <textarea name="notes" placeholder="Date, city, menu ideas, or timing"></textarea>
+          </label>
           <div class="estimate">
             <span><output data-guest-output>90</output> guests</span>
             <strong data-estimate>$3,600+</strong>
           </div>
-          <button class="button primary full" type="button">Request availability</button>
+          <button class="button primary full" type="button" data-text-booking>Text booking request</button>
+          <a class="text-fallback" href="sms:+13135985098">Or text Tre's directly at (313) 598-5098</a>
         </form>
       </section>
     </main>
